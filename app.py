@@ -9,12 +9,13 @@ app = Flask(__name__)
 
 def sendMsg(id, text):
 	url = f'https://api.telegram.org/bot{TOKEN}/sendMessage'
-	payload = {
-		'chat_id' : id,
-		'text' : text
-	}
-	response = requests.post(url, json=payload)
-	return response
+	if text:
+		payload = {
+			'chat_id' : id,
+			'text' : text
+		}
+		response = requests.post(url, json=payload)
+		return response
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

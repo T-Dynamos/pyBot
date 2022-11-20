@@ -27,5 +27,3 @@ def parseCommand(text):
 		Repo : https://github.com/pyGuru123/pyBot"""
 	elif text.startswith('/youtube'):
 		return "https://www.youtube.com/c/pyGuru"
-
-	return text
