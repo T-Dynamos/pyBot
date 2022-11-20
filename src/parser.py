@@ -1,5 +1,5 @@
 from src.services import *
-from src.pythonREPL import execute_python
+from src.pythonREPL import *
 
 def parseMessage(msg):
 	print(msg)
@@ -14,14 +14,14 @@ def parseMessage(msg):
 def parseCommand(text):
 	if text.startswith('/runpy'):
 		code = text.strip('/runpy')
-		output = execute_python(code)
-		result = f"""Execution Results 
+		output = CodeExecuter(code).execute_python()
+		result = f"""Execution Results
 
 Execution time : {output[0]}
 Return Code : {output[-1]}
 
 Errors:
-{output[1][0]}
+{output[1][0] if output[1][0] != "" else None}
 
 Output:
 {output[1][-1]}"""

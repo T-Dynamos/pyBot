@@ -1,7 +1,6 @@
 import requests
 from flask import Flask, request, Response
 from src.parser import parseMessage, parseCommand
-from src.pythonREPL import execute_python
 
 TOKEN = "5830914299:AAEyaoz_yGrTzVi2cLMeC6B91QWQho3fUp0"
 BOTID = "-1001439604894"
