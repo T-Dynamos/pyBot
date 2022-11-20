@@ -17,6 +17,6 @@ def execute_python(code):
 	with stdoutIO() as c:
 		try:
 			exec(code)
-		except Exception as e:
-			print(e)
+		except:
+			print("Something wrong with the code")
 	return c.getvalue()

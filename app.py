@@ -4,6 +4,7 @@ from src.parser import parseMessage, parseCommand
 from src.pythonREPL import execute_python
 
 TOKEN = "5830914299:AAEyaoz_yGrTzVi2cLMeC6B91QWQho3fUp0"
+BOTID = "-1001439604894"
 app = Flask(__name__)
 
 def sendMsg(id, text):
@@ -20,9 +21,9 @@ def index():
 	if request.method == "POST":
 		msg = request.get_json()
 		chatId, text = parseMessage(msg)
-		print(text)
-		result = parseCommand(text)
-		sendMsg(chatId, result)
+		if chatId:
+			result = parseCommand(text)
+			sendMsg(chatId, result)
 
 		return Response('ok', status=200)
 	return "<h1> Hello Bot </h1>"
@@ -30,4 +31,4 @@ def index():
 if __name__ == "__main__":
 	app.run(debug=True, threaded=True)
 
-# https://api.telegram.org/bot5830914299:AAEyaoz_yGrTzVi2cLMeC6B91QWQho3fUp0/setWebhook?url=https://d06d-2409-4063-4c07-7d1e-41a8-cc42-8179-be51.in.ngrok.io
+# https://api.telegram.org/bot5830914299:AAEyaoz_yGrTzVi2cLMeC6B91QWQho3fUp0/setWebhook?url=https://ba79-2409-4063-4c07-7d1e-41a8-cc42-8179-be51.in.ngrok.io
