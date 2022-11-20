@@ -14,8 +14,18 @@ def parseMessage(msg):
 def parseCommand(text):
 	if text.startswith('/runpy'):
 		code = text.strip('/runpy')
-		result = execute_python(code).rstrip('\n')
-		return f"Result: \n{result}"
+		output = execute_python(code)
+		result = f"""Execution Results 
+
+Execution time : {output[0]}
+Return Code : {output[-1]}
+
+Errors:
+{output[1][0]}
+
+Output:
+{output[1][-1]}"""
+		return result
 	elif text.startswith('/date'):
 		return get_date()
 	elif text.startswith('/time'):
